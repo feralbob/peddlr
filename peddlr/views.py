@@ -1,3 +1,4 @@
+from django.forms.models import inlineformset_factory
 from django.shortcuts import render
 from peddlr.forms import *
 from peddlr.models import *
@@ -17,5 +18,7 @@ def buy(request):
 
 
 def sell(request):
+    # form = CheckinItemFormSet
     form = CheckinForm
+
     return render(request, 'sell.html', {form: form})

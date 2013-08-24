@@ -1,11 +1,11 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
 {% block body %}
 <div id="home" class="">
     <h2>Welcome to Peddlr!</h2>
     <p>
-        <a class="btn btn-large btn-primary" href="{% url 'buy' %}">Buy</a>
-        <a class="btn btn-large btn-primary" href="{% url 'sell' %}">Sell</a>
+        <a class="btn btn-large btn-primary" href="{% url 'peddlr.views.buy' %}">Buy</a>
+        <a class="btn btn-large btn-primary" href="{% url 'home' %}">Sell</a>
     </p>
 </div>
 {% endblock %}

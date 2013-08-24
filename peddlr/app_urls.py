@@ -6,3 +6,5 @@ urlpatterns = patterns('peddlr.views',
     url(r'buy/$', 'buy', name='buy'),
     url(r'sell/$', 'sell', name='sell'),
 )
+
+

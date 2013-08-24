@@ -5,11 +5,10 @@
     <h2>Buy</h2>
     <p>Search form here.</p>
     <form action="" method="post">{% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_table }}
         <input type="submit" value="Submit" />
     </form>
-    <p>Checkboxes for items go here</p>
-    <p>Location: auto-detect, or show a map, or both</p>
+
     <p>List with markers/directions</p>
     <table>
         {% for checkin_list in checkin %}

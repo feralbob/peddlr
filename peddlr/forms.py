@@ -10,7 +10,9 @@ class CheckinForm(ModelForm):
         fields = ['items', 'name', 'location']
 
 
-
 class BuyerSearchForm(forms.Form):
-    items = forms.DateField()
+    def __init__(self, items, *args, **kwargs):
+        super(BuyerSearchForm, self).__init__(*args, **kwargs)
+        self.fields['items'] = forms.CheckboxSelectMultiple(choices=[(i.id, str(name)) for name in items.all()], widget=forms.CheckboxSelectMultiple)
+
     location = GeopositionField()

@@ -1,9 +1,11 @@
 from django.db import models
+from geoposition.fields import GeopositionField
 
 
 class Checkin(models.Model):
     seller_name = models.CharField(max_length=255)
-    location = models.()
+    location = GeopositionField()
+    items = models.ManyToManyField(Items,)
     time = models.DateTimeField(auto_now=True)
     expiry = models.IntegerField(help_text=u'Seconds', choices=((3600, u'1 Hour'),
                                                                (7200, u'2 Hours'),

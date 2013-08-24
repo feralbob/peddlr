@@ -14,6 +14,6 @@ urlpatterns = patterns('',
 #if settings.DEBUG and settings.USING_RUNSERVER:
 if settings.DEBUG:
     urlpatterns += patterns('',
-                            url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-                                'document_root': settings.MEDIA_ROOT, }),
+                            url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, }),
+                            url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, }),
                             )

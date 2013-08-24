@@ -14,16 +14,15 @@ class CheckinAdmin(admin.ModelAdmin):
 
 class CheckinItemAdmin(admin.ModelAdmin):
     save_on_top = True
-    fields = ('slice_ref', 'mode', 'type_type', 'rng', 'aggregation_fn', 'operator', 'constant')
-    readonly_fields = ('slice_ref', )
-    list_display = ('slice_ref', 'mode', 'type_type', 'rng', 'aggregation_fn', 'operator', 'constant')
+    fields = ('price', 'unit', 'item', 'checkin', 'options')
+    readonly_fields = ()
+    list_display = ('price', 'unit', 'item', 'checkin', 'options')
 
 
 class ItemsAdmin(admin.ModelAdmin):
     save_on_top = True
-    fields = ('name', 'timestamp', 'active', 'slice_ref', 'fraction', 'population', 'automated_email')
-    readonly_fields = ('timestamp',)
-    list_display = ('user', 'intervention', 'experimental', 'timestamp')
+    fields = ('name',)
+    list_display = ('name',)
 
 
 admin.site.register(Items, ItemsAdmin)

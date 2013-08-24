@@ -6,6 +6,9 @@ from django.contrib.gis.db.models import PointField, GeoManager
 class Item(models.Model):
     name = models.CharField(max_length=255, )
 
+    class Meta:
+        ordering = ('name',)
+
     def __unicode__(self):
         return self.name
 
@@ -20,7 +23,7 @@ class Checkin(models.Model):
     point = PointField(blank=True)
     time = models.DateTimeField(auto_now=True)
     expiry = models.DateTimeField()
-    expiry_offset = models.IntegerField(verbose_name='For how long?', default=3600, choices=( (3600, u'1 Hour'),
+    expiry_offset = models.IntegerField(verbose_name='For how long?', default=3600, choices=((3600, u'1 Hour'),
                                                                 (7200, u'2 Hours'),
                                                                 (10800, u'3 Hours'),
                                                                 (14400, u'4 Hours'),))

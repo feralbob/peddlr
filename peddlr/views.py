@@ -1,30 +1,24 @@
-from django.forms.models import inlineformset_factory
 from django.shortcuts import render
 from peddlr.forms import *
-from peddlr.models import *
-from django.forms.models import modelformset_factory
-from django.contrib.gis.geos import Point
 from django.contrib.gis.geos import fromstr
-
-
+from peddlr.models import Checkin
 
 
 def home(request):
-
     return render(request, 'home.html', {})
 
 
 def buy(request):
     form = BuyerSearchForm()
-    checkin_list = Checkin.objects.all()
-
+    checkin_list = []
     if request.method == 'POST':
         form = BuyerSearchForm(request.POST)
         if form.is_valid():
+            things = []
+            for item in form.cleaned_data['items']:
+                things.append(item.pk)
             point = fromstr("POINT(%s %s)" % (form.cleaned_data['longitude'], form.cleaned_data['latitude']))
-            checkin_list = Checkin.objects.distance(point).order_by('distance')
-            checkin_list = Checkin.objects.all()
-
+            checkin_list = Checkin.objects.distance(point).order_by('distance').filter(items__in=things)
     return render(request, 'buy.html', {'checkin_list': checkin_list, 'form': form})
 
 

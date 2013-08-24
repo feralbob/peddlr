@@ -6,19 +6,27 @@ body{
     padding:0px;
 }
 
+h2 {
+    text-align: center;
+}
+
 #logo {
     width: 408px;
     height: 200px;
 }
 
 #sell {
+    text-align: left;
     background-color: rgba(255, 255, 255, 0.7);
     max-width: 500px;
+    padding:20px;
 }
 
 #buy {
+    text-align: left;
     background-color: rgba(255, 255, 255, 0.7);
     max-width: 500px;
+    padding:20px;
 }
 
 .navbar-inverse .navbar-inner {

@@ -1,23 +1,29 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block body %}
 <div id="buy" class="container">
     <h2>Buy</h2>
-    <p>Search form here.</p>
+
+    {% if checkin_list %}
+    <table class="table table-striped table-bordered">
+        <thead><tr><td>Distance</td><td>Seller</td><td>For Sale</td><td>Last checked in</td><td></td></tr></thead>
+        <tbody>
+        {% for checkin in checkin_list %}
+            <tr><td><strong>{{ checkin.distance.km|floatformat:1}} km</strong></td><td>{{ checkin.seller_name }}</td><td>{% for item in checkin.items.all %}{{ item.name }}, {% endfor %}</td><td>{{ checkin.time|naturaltime }}</td><td><a href="http://maps.apple.com/maps?q={{ checkin.point.y }},{{ checkin.point.x }}">Get Directions</a></td></tr>
+        {% empty %}
+            <tr><td>Oops, no recent checkins to show.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <p>Search for Peddlrs near you!</p>
     <form action="" method="post">{% csrf_token %}
         {{ form.as_table }}
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" class="btn btn-large" />
+        <a href="{% url 'peddlr:buy' %}" class="btn btn-large">Clear</a>
     </form>
-
-    <p>List with markers/directions</p>
-    <table>
-        {% for checkin in checkin_list %}
-            <tr><td>{{ checkin.distance }}</td><td>{{ checkin.seller_name }}</td><td>{% for checkin.items in item %}{{ item.name }}, {% endfor %}</td><td>{{ checkin.time }}</td></tr>
-        {% empty %}
-            <tr><td>Oops, no checkins to show.</td></tr>
-        {% endfor %}
-    </table>
-    <p>Map with markers/directions</p>
 
 </div>
 {% endblock %}

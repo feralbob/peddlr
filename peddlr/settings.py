@@ -92,7 +92,7 @@ INSTALLED_APPS = (
     'sekizai',
     'peddlr',
     "geoposition",
-
+    'django.contrib.humanize',
 )
 
 ALLOWED_HOSTS = ('*',)

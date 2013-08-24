@@ -1,0 +1,14 @@
+body
+{
+    background: #3c8bcd url(../img/background.jpg) top center no-repeat;
+    font-family: arial, helvetica, sans-serif;
+    text-align:center;
+    margin:0px;
+    padding:0px;
+}
+
+#logo
+{
+    width: 408px;
+    height: 200px;
+}

@@ -11,6 +11,9 @@ class Checkin(models.Model):
                                                         (10800, u'3 Hours'),
                                                         (14400, u'4 Hours'),))
 
+    class Meta:
+        ordering = ('-time',)
+
     def __unicode__(self):
         return self.seller_name
 

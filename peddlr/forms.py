@@ -1,13 +1,16 @@
 from django import forms
 from django.forms import ModelForm
-from peddlr.models import Checkin
+from django.forms.models import inlineformset_factory
+from peddlr.models import Checkin, Item, CheckinItem
 from geoposition.fields import GeopositionField
 
 
 class CheckinForm(ModelForm):
     class Meta:
         model = Checkin
-        fields = ['items', 'seller_name', 'location']
+        fields = ['seller_name', 'location']
+
+# CheckinItemFormSet = inlineformset_factory(Checkin, CheckinItem, form=CheckinForm, extra=4)
 
 
 class BuyerSearchForm(forms.Form):

@@ -5,9 +5,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'peddlr.views.home', name='home'),
     url(r'buy/^$', 'peddlr.views.buy', name='buy'),
     url(r'sell/^$', 'peddlr.views.sell', name='sell'),
+
+    url(r'^$', 'peddlr.views.home', name='home'),
 
     url(r'^admin/', include(admin.site.urls)),
 

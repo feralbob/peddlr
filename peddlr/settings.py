@@ -1,4 +1,4 @@
-# Django settings for hackathon project.
+# Django settings for peddlr project.
 import django.conf.global_settings as DEFAULT_SETTINGS
 
 ADMINS = (
@@ -73,10 +73,10 @@ MIDDLEWARE_CLASSES = (
 
 )
 
-ROOT_URLCONF = 'hackathon.urls'
+ROOT_URLCONF = 'peddlr.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'hackathon.wsgi.application'
+WSGI_APPLICATION = 'peddlr.wsgi.application'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -89,6 +89,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'debug_toolbar',
     'sekizai',
+    'peddlr',
 
 )
 

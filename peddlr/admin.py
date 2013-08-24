@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Checkin, CheckinItem, Items
+from models import Checkin, CheckinItem, Item
 
 
 #class Inline(admin.TabularInline):
@@ -25,6 +25,6 @@ class ItemsAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
-admin.site.register(Items, ItemsAdmin)
+admin.site.register(Item, ItemsAdmin)
 admin.site.register(Checkin, CheckinAdmin)
 admin.site.register(CheckinItem, CheckinItemAdmin)

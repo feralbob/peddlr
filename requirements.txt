@@ -2,5 +2,6 @@ Django==1.5.2
 MySQL-python==1.2.4
 django-classy-tags==0.4
 django-debug-toolbar==0.9.4
+django-geoposition==0.1.4
 django-sekizai==0.7
 wsgiref==0.1.2

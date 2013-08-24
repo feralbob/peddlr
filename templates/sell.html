@@ -10,19 +10,6 @@
         </table>
 
 
-    {{ formset.management_form }}
-    <table>
-        <thead><tr><td>Item</td><td>Price</td><td>Unit</td></tr></thead>
-        <tbody>
-        {% for form in formset %}
-            <tr>
-                <td>{{ form.item }}</td>
-                <td>{{ form.price }}</td>
-                <td>{{ form.unit }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
     <input type="submit" value="Submit" />
     </form>
 </div>

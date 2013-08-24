@@ -6,6 +6,7 @@ from geoposition.fields import GeopositionField
 
 class CheckinForm(ModelForm):
     # expiry_offset = forms.CharField(label='For how long?')
+    
 
     class Meta:
         model = Checkin

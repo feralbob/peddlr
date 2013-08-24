@@ -34,6 +34,8 @@
         </style>
         <link href="{{ CDN }}{% static "css/bootstrap-responsive.css" %}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ CDN }}{% static 'css/styles.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{{ CDN }}{% static 'css/responsive.css' %}" />
+
         {% block extra_style %}{% endblock %}
     {% endblock %}
     {% render_block 'css' %}
@@ -53,6 +55,7 @@
     <script src="{{ CDN }}{% static "js/jquery.js" %}"></script>
     <script src="{{ CDN }}{% static "js/bootstrap.min.js" %}"></script>
     <script src="{{ CDN }}{% static "js/scripts.js" %}"></script>
+
 
 
     {% comment %}{% include 'autocomplete_light/static.html' %}{% endcomment %}
@@ -109,7 +112,7 @@
                 <div class="{% block body_base_class %}span12{% endblock %}">
                     <div class="{% block body_inner_class %}page-main-body{% endblock %}">
                         <div class="base_logo">
-                            <a href="/"><img id=logo src="{% static "img/logo_text.png" %}" ></a>
+                            <a href="/"><img id=logo src="{% static "img/logo_text2.png" %}" ></a>
                         </div>
                         {% block body %}
                         {% endblock %}

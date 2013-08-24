@@ -1,0 +1,148 @@
+{% load staticfiles sekizai_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} | {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+
+    {% block style_base %}
+        <link href="{{ CDN }}{% static "css/bootstrap.css" %}" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
+
+            @media (max-width: 980px) {
+                /* Enable use of floated navbar text */
+                .navbar-text.pull-right {
+                    float: none;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+        </style>
+        <link href="{{ CDN }}{% static "css/bootstrap-responsive.css" %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ CDN }}{% static 'css/sharedstyles.css' %}" />
+        {% block extra_style %}{% endblock %}
+    {% endblock %}
+    {% render_block 'css' %}
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="{{ CDN }}{% static "js/html5shiv.js" %}"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ CDN }}{% static "ico/apple-touch-icon-144-precomposed.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ CDN }}{% static "ico/apple-touch-icon-114-precomposed.png" %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ CDN }}{% static "ico/apple-touch-icon-72-precomposed.png" %}">
+    <link rel="apple-touch-icon-precomposed" href="{{ CDN }}{% static "ico/apple-touch-icon-57-precomposed.png" %}">
+    <link rel="shortcut icon" href="{{ CDN }}{% static "ico/favicon.png" %}">
+
+    <script src="{{ CDN }}{% static "js/jquery.js" %}"></script>
+    <script src="{{ CDN }}{% static "js/bootstrap.min.js" %}"></script>
+
+    {% comment %}{% include 'autocomplete_light/static.html' %}{% endcomment %}
+    {% block head_after %}{% endblock %}
+
+</head>
+
+<body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="{% url "dataportal:home" %}">Peddlr</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    {% if user.is_authenticated %}
+                        Logged in as <a href="#" class="navbar-link">{{ user.username }}</a> - <a href="/account/logout/">Logout</a>
+                    {% endif %}
+                </p>
+                <ul class="nav">
+                    <li class="{% navactive request '' %}"><a href="{% url ':home' %}">Home</a></li>
+
+                    <!--
+                    <li><a href="#contact">Contact</a></li>
+                    -->
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<div id="html">
+
+    {% block body_base %}
+        <div class="container wrapper">
+
+            {% block header_base %}
+                <div id="header">
+                    {% block header %}{% endblock %}
+                </div>
+            {% endblock %}
+
+            <div class="page-header">
+                <h1>{% block page_header_title %}{% endblock %}</h1>
+            </div>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+
+            <div class="row">
+
+                {% block subnav_base %}
+                    <div class="span3 subnav_base">
+                        {% block subnav %}
+                        {% endblock %}
+                        {% block subnav_last %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                <div class="{% block body_base_class %}span9{% endblock %}">
+                    <div class="{% block body_inner_class %}page-main-body{% endblock %}">
+                        {% block body %}
+                        {% endblock %}
+
+                        {% block base_content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+            {% block footer_base %}
+                <div id="footer">
+                    {% block footer %}{% endblock %}
+                </div>
+            {% endblock %}
+
+        </div>
+    {% endblock %}
+</div>
+{% render_block 'extrajs' %}
+</body>
+</html>

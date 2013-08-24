@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'debug_toolbar',
+    'django.contrib.gis',
     'sekizai',
     'peddlr',
     "geoposition",
@@ -136,6 +137,8 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.signals.SignalDebugPanel',
     'debug_toolbar.panels.logger.LoggingPanel',
 )
+
+# GEOS_LIBRARY_PATH = '/home/bob/local/lib/libgeos_c.so'
 
 try:
     from peddlr.local_settings import *

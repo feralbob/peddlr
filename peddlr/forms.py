@@ -6,11 +6,12 @@ from geoposition.fields import GeopositionField
 
 class CheckinForm(ModelForm):
     # expiry_offset = forms.CharField(label='For how long?')
-    
+    latitude = forms.CharField(widget=forms.HiddenInput())
+    longitude = forms.CharField(widget=forms.HiddenInput())
 
     class Meta:
         model = Checkin
-        exclude = ('expiry',)
+        exclude = ('expiry', 'point')
 
 ITEM_CHOICES = Item.objects.all()
 

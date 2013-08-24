@@ -1,6 +1,6 @@
 from django.db import models
-from geoposition.fields import GeopositionField
 from datetime import timedelta, datetime
+from django.contrib.gis.db.models import PointField, GeoManager
 
 
 class Item(models.Model):
@@ -17,7 +17,7 @@ class CheckinManager(models.Manager):
 
 class Checkin(models.Model):
     seller_name = models.CharField(max_length=255, verbose_name='Your name')
-    location = GeopositionField()
+    point = PointField(blank=True)
     time = models.DateTimeField(auto_now=True)
     expiry = models.DateTimeField()
     expiry_offset = models.IntegerField(verbose_name='For how long?', default=3600, choices=( (3600, u'1 Hour'),
@@ -28,6 +28,7 @@ class Checkin(models.Model):
     notes = models.TextField(help_text='Any additional information you would like to share.')
 
     # objects = CheckinManager
+    objects = GeoManager()
 
     class Meta:
         ordering = ('-time',)

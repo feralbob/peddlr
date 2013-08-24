@@ -1,4 +1,4 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
 {% block body %}
 <div id="buy" class="container">
@@ -8,8 +8,8 @@
     <p>Location: auto-detect, or show a map, or both</p>
     <p>List with markers/directions</p>
     <table>
-        {% for checkin_list AS checkin %}
-            <tr><td>{{ checkin.seller_name }}</td><td>{% for checkin.items AS item %}{{ item.name }}, {% endfor %}</td><td>{{ checkin.time }}</td></tr>
+        {% for checkin_list in checkin %}
+            <tr><td>{{ checkin.seller_name }}</td><td>{% for checkin.items in item %}{{ item.name }}, {% endfor %}</td><td>{{ checkin.time }}</td></tr>
         {% empty %}
             <tr><td>Oops, no checkins to show.</td></tr>
         {% endfor %}

@@ -10,12 +10,9 @@ def home(request):
 
 
 def buy(request):
-
     form = BuyerSearchForm()
-
     checkin_list = Checkin.objects.all()
-
-    return render(request, 'buy.html', {checkin_list: checkin_list, 'form': form})
+    return render(request, 'buy.html', {'checkin_list': checkin_list, 'form': form})
 
 
 def sell(request):

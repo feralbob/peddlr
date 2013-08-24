@@ -11,10 +11,15 @@ class CheckinForm(ModelForm):
         model = Checkin
         exclude = ('expiry',)
 
+ITEM_CHOICES = Item.objects.all()
+
+ITEM_CHOICES = (
+    ("visa", "Visa"),
+    ("mastercard", "MasterCard"),
+)
+
 
 class BuyerSearchForm(forms.Form):
-    def __init__(self, items, *args, **kwargs):
-        super(BuyerSearchForm, self).__init__(*args, **kwargs)
-        self.fields['items'] = forms.CheckboxSelectMultiple(choices=[(i.id, str(i)) for i in items.all()], widget=forms.CheckboxSelectMultiple)
-
-    location = GeopositionField()
+    items = forms.ModelMultipleChoiceField(queryset=Item.objects.all(), widget=forms.CheckboxSelectMultiple)
+    latitude = forms.CharField(widget=forms.HiddenInput())
+    longitude = forms.CharField(widget=forms.HiddenInput())

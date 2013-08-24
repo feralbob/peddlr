@@ -7,7 +7,7 @@ from geoposition.fields import GeopositionField
 class CheckinForm(ModelForm):
     class Meta:
         model = Checkin
-        fields = ['items', 'name', 'location']
+        fields = ['items', 'seller_name', 'location']
 
 
 class BuyerSearchForm(forms.Form):

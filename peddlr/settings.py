@@ -90,6 +90,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'sekizai',
     'peddlr',
+    "geoposition",
 
 )
 

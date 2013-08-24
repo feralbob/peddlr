@@ -8,7 +8,7 @@ from models import Checkin, CheckinItem, Item
 
 class CheckinAdmin(admin.ModelAdmin):
     save_on_top = True
-    fields = ('seller_name', 'location', 'time', 'expiry')
+    fields = ('seller_name', 'location', 'expiry')
     list_display = ('seller_name', 'location', 'time', 'expiry')
 
 

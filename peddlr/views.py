@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from peddlr.forms import *
 
 
 def home(request):
@@ -8,9 +9,10 @@ def home(request):
 
 def buy(request):
 
-    return render(request, 'buy.html', {})
+    form = BuyerSearchForm()
+    return render(request, 'buy.html', {form: form})
 
 
 def sell(request):
-
-    return render(request, 'sell.html', {})
+    form = CheckinForm
+    return render(request, 'sell.html', {form: form})

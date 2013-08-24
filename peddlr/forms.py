@@ -6,11 +6,13 @@ from geoposition.fields import GeopositionField
 
 
 class CheckinForm(ModelForm):
+
     class Meta:
         model = Checkin
-        fields = ['seller_name', 'location']
+        exclude = ('title',)
 
-# CheckinItemFormSet = inlineformset_factory(Checkin, CheckinItem, form=CheckinForm, extra=4)
+CheckinItemFormSet = inlineformset_factory(Checkin, CheckinItem, form=CheckinForm, extra=4)
+
 
 
 class BuyerSearchForm(forms.Form):

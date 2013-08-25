@@ -13,11 +13,6 @@ class Item(models.Model):
         return self.name
 
 
-class CheckinManager(models.Manager):
-    def get_query_set(self):
-        return super(CheckinManager, self).get_query_set().filter(expiry__gt=datetime.now())
-
-
 class Checkin(models.Model):
     seller_name = models.CharField(max_length=255, verbose_name='Your name')
     point = PointField(blank=True)
@@ -30,7 +25,6 @@ class Checkin(models.Model):
     items = models.ManyToManyField(Item)
     notes = models.TextField(help_text='Any additional information you would like to share.')
 
-    # objects = CheckinManager
     objects = GeoManager()
 
     class Meta:

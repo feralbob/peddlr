@@ -4,10 +4,23 @@ body{
     text-align:center;
     margin:0px;
     padding:0px;
+    background-attachment: fixed;
 }
 
 h2 {
     text-align: center;
+}
+
+.base_logo {
+    margin-bottom: 15px;
+}
+.messages  {
+    color: #fff;
+    background-color: #c0311a;
+    font-style: italic;
+    font-weight: bold;
+    vertical-align:middle;
+    padding: 10px;
 }
 
 #logo {

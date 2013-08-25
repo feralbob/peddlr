@@ -7,10 +7,17 @@
 
     {% if checkin_list %}
     <table class="table table-striped table-bordered">
+        <caption>Here are the Peddlrs near you now:</caption>
         <thead><tr><td>Distance</td><td>Seller</td><td>For Sale</td><td>Last checked in</td><td></td></tr></thead>
         <tbody>
         {% for checkin in checkin_list %}
-            <tr><td><strong>{{ checkin.distance.km|floatformat:1}} km</strong></td><td>{{ checkin.seller_name }}</td><td>{% for item in checkin.items.all %}{{ item.name }}, {% endfor %}</td><td>{{ checkin.time|naturaltime }}</td><td><a href="http://maps.apple.com/maps?q={{ checkin.point.y }},{{ checkin.point.x }}">Get Directions</a></td></tr>
+            <tr>
+                <td><strong>{{ checkin.distance.km|floatformat:1}} km</strong></td>
+                <td>{{ checkin.seller_name }}</td>
+                <td>{% for item in checkin.items.all %}{{ item.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                <td>{{ checkin.time|naturaltime }}</td>
+                <td><a href="http://maps.apple.com/maps?q={{ checkin.point.y }},{{ checkin.point.x }}">Get Directions</a></td>
+            </tr>
         {% empty %}
             <tr><td>Oops, no recent checkins to show.</td></tr>
         {% endfor %}

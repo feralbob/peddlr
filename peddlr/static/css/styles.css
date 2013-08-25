@@ -12,7 +12,8 @@ h2 {
 }
 
 .base_logo {
-    margin-bottom: 15px;
+    margin: 10px 0px 15px 0px;
+
 }
 .messages  {
     color: #fff;

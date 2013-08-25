@@ -28,8 +28,8 @@
     <p>Search for Peddlrs near you!</p>
     <form action="" method="post">{% csrf_token %}
         {{ form.as_table }}
-        <input type="submit" value="Submit" class="btn btn-large" />
-        <a href="{% url 'peddlr:buy' %}" class="btn btn-large">Clear</a>
+        <input type="submit" value="Submit" class="btn btn-large btn-primary" />
+        <a href="{% url 'peddlr:buy' %}" class="btn btn-large btn-primary">Clear</a>
     </form>
 
 </div>

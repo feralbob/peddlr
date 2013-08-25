@@ -11,7 +11,7 @@ class CheckinForm(ModelForm):
 
     class Meta:
         model = Checkin
-        exclude = ('expiry', 'point')
+        exclude = ('expiry', 'point', 'notes')
 
 ITEM_CHOICES = Item.objects.all()
 
